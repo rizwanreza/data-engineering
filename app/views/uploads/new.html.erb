@@ -1,0 +1,26 @@
+<h1>Upload Transactions</h1>
+<h3><small>Upload your transactions file here.</small></h3>
+
+<% if flash[:notice].present? %>
+<div data-alert class="alert-box">
+  <%= flash[:notice] %>
+  <a href="#" class="close">&times;</a>
+</div>
+<% end %>
+
+<%= form_for @transaction, url: upload_path do |f| %>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :list do %>
+        CSV File
+        <%= f.file_field :list %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit "Upload", class: 'button radius small' %>
+    </div>
+  </div>
+<% end %>
